@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Secreto - UTU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Código Secreto</h1>
+        <p class="subtitle">Lógica y Deducción</p>
+        
+        <div id="tablero" class="tablero">
+            </div>
+
+        <div class="panel-control">
+            <div class="selector-colores">
+                <button class="btn-color red" onclick="seleccionarColor('red')"></button>
+                <button class="btn-color blue" onclick="seleccionarColor('blue')"></button>
+                <button class="btn-color green" onclick="seleccionarColor('green')"></button>
+                <button class="btn-color yellow" onclick="seleccionarColor('yellow')"></button>
+                <button class="btn-color purple" onclick="seleccionarColor('purple')"></button>
+                <button class="btn-color orange" onclick="seleccionarColor('orange')"></button>
+            </div>
+            <div class="acciones">
+                <button class="btn-accion" onclick="borrarUltimo()">Borrar</button>
+                <button class="btn-accion principal" onclick="verificarIntento()">Verificar Intento</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
