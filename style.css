@@ -1,0 +1,98 @@
+/* Estilo inspirado en el tablero clásico azul de UTU */
+body {
+    background-color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+}
+
+.game-container {
+    background-color: #0056b3;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    text-align: center;
+    width: 350px;
+}
+
+.tablero {
+    display: flex;
+    flex-direction: column-reverse; /* Para que la fila 1 esté abajo */
+    gap: 8px;
+    margin-bottom: 20px;
+    background: #003d7a;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+.huecos-intento {
+    display: flex;
+    gap: 10px;
+}
+
+.hueco {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #002a54;
+    border: 2px solid #001a35;
+}
+
+.pistas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.pista-punto {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #001a35;
+}
+
+.panel-control {
+    background: #00448a;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.btn-color {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    margin: 4px;
+    transition: transform 0.1s;
+}
+
+.btn-color:active { transform: scale(0.9); }
+
+.red { background: #e74c3c; }
+.blue { background: #3498db; }
+.green { background: #2ecc71; }
+.yellow { background: #f1c40f; }
+.purple { background: #9b59b6; }
+.orange { background: #e67e22; }
+
+.acciones { margin-top: 15px; display: flex; gap: 10px; justify-content: center; }
+.btn-accion {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #bdc3c7;
+}
+.btn-accion.principal { background: #2ecc71; color: white; font-weight: bold; }
