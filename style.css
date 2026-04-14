@@ -50,16 +50,18 @@ body {
 }
 
 .pistas-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
+    display: flex; /* Cambio de grid a flex */
+    flex-direction: row; /* Forzamos alineación horizontal */
+    gap: 4px; /* Un poco más de espacio entre puntos alineados */
+    justify-content: center; /* Centramos los puntos en su área */
 }
 
 .pista-punto {
-    width: 12px;
-    height: 12px;
+    width: 14px; /* Ligeramente más grandes para mejor visibilidad en línea */
+    height: 14px;
     border-radius: 50%;
-    background-color: #001a35;
+    background-color: #001a35; /* Color por defecto (vacío) */
+    border: 1px solid rgba(255,255,255,0.2); /* Sutil borde para definir el hueco */
 }
 
 .panel-control {
