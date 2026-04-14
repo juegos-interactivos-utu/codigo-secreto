@@ -61,32 +61,45 @@ function actualizarFilaVisual() {
     });
 }
 
+// --- REEMPLAZAR EN script.js ---
+
 function verificarIntento() {
     if (intentoActual.length < 4) return;
 
     let rojas = 0;
     let amarillas = 0;
-    let copiaCodigo = [...codigoSecreto];
-    let copiaIntento = [...intentoActual];
 
-    // Lógica de comparación
+    // Lógica de comparación RIGUROSA (Mastermind Standard)
+
+    // Usaremos marcas para no re-contar fichas
+    let marcasCodigo = [false, false, false, false];
+    let marcasIntento = [false, false, false, false];
+
+    // PASO 1: Contar Rojas (Coincidencias EXACTAS)
     for (let i = 0; i < 4; i++) {
-        if (copiaIntento[i] === copiaCodigo[i]) {
+        if (intentoActual[i] === codigoSecreto[i]) {
             rojas++;
-            copiaCodigo[i] = null;
-            copiaIntento[i] = null;
+            marcasCodigo[i] = true;
+            marcasIntento[i] = true;
         }
     }
+
+    // PASO 2: Contar Amarillas (Coincidencias de COLOR restante)
+    // Solo comparamos las fichas que NO fueron marcadas como rojas
     for (let i = 0; i < 4; i++) {
-        if (copiaIntento[i] !== null) {
-            let idx = copiaCodigo.indexOf(copiaIntento[i]);
-            if (idx !== -1) {
-                amarillas++;
-                copiaCodigo[idx] = null;
+        if (!marcasIntento[i]) { // Si esta ficha del intento NO es roja
+            for (let j = 0; j < 4; j++) {
+                // Buscamos una ficha del código que NO sea roja Y que NO haya sido ya usada como amarilla
+                if (!marcasCodigo[j] && intentoActual[i] === codigoSecreto[j]) {
+                    amarillas++;
+                    marcasCodigo[j] = true; // Marcamos esta ficha del código como usada para esta pista
+                    break; // Pasamos a la siguiente ficha del intento
+                }
             }
         }
     }
 
+    // El resto de la función sigue igual...
     mostrarPistas(rojas, amarillas);
 
     if (rojas === 4) {
@@ -101,7 +114,6 @@ function verificarIntento() {
         }
     }
 }
-
 function mostrarPistas(r, a) {
     const fila = document.getElementById(`fila-${filaActiva}`);
     const puntos = fila.getElementsByClassName('pista-punto');
